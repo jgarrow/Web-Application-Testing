@@ -29,18 +29,37 @@ function App() {
         return updatedStrikes;
     };
 
+    const addFoul = (currentStrikes, currentFouls) => {
+        let updatedStrikes = currentStrikes;
+        let updatedFouls = currentFouls + 1;
+
+        if (currentStrikes < 2) {
+            updatedStrikes = addStrike(currentStrikes);
+        }
+
+        if (hit) {
+            updatedFouls = 0;
+            updatedStrikes = 0;
+        }
+
+        setFouls(updatedFouls);
+
+        return updatedStrikes;
+    };
+
     // useEffect(() => {
 
     // }, [balls, strikes]);
 
     return (
         <div>
-            <Display balls={balls} strikes={strikes} />
+            <Display balls={balls} strikes={strikes} fouls={fouls} />
             <Dashboard
                 setBalls={setBalls}
                 setStrikes={setStrikes}
                 addBall={() => addBall(balls)}
                 addStrike={() => addStrike(strikes)}
+                addFoul={() => addFoul(strikes, fouls)}
             />
         </div>
     );

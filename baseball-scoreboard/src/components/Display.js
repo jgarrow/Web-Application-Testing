@@ -11,6 +11,10 @@ export default props => {
                 <h2>Strikes</h2>
                 <p>{props.strikes}</p>
             </div>
+            <div>
+                <h2>Fouls</h2>
+                <p>{props.fouls}</p>
+            </div>
         </div>
     );
 };

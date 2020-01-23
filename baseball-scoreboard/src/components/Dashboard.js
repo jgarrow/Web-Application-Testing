@@ -17,6 +17,13 @@ export default props => {
             >
                 Add strike
             </div>
+            <div
+                onClick={() => {
+                    props.setStrikes(props.addFoul());
+                }}
+            >
+                Foul
+            </div>
         </div>
     );
 };
