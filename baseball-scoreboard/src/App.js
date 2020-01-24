@@ -47,19 +47,28 @@ function App() {
         return updatedStrikes;
     };
 
-    // useEffect(() => {
+    const recordHit = () => {
+        setStrikes(0);
+        setFouls(0);
+        setBalls(0);
+        setHit(true);
 
-    // }, [balls, strikes]);
+        // reset after 2 seconds for new hitter
+        setTimeout(() => {
+            setHit(false);
+        }, 2000);
+    };
 
     return (
         <div>
-            <Display balls={balls} strikes={strikes} fouls={fouls} />
+            <Display balls={balls} strikes={strikes} fouls={fouls} hit={hit} />
             <Dashboard
                 setBalls={setBalls}
                 setStrikes={setStrikes}
                 addBall={() => addBall(balls)}
                 addStrike={() => addStrike(strikes)}
                 addFoul={() => addFoul(strikes, fouls)}
+                recordHit={recordHit}
             />
         </div>
     );

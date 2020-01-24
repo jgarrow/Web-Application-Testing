@@ -22,7 +22,14 @@ export default props => {
                     props.setStrikes(props.addFoul());
                 }}
             >
-                Foul
+                Add Foul
+            </div>
+            <div
+                onClick={() => {
+                    props.recordHit();
+                }}
+            >
+                Record Hit
             </div>
         </div>
     );
