@@ -25,6 +25,28 @@ test("if balls are at 3, addBall sets ball to 0", () => {
     expect(getByTestId("balls")).toHaveTextContent("0");
 });
 
+test("if balls are at 3, addBall sets strikes to 0", () => {
+    const { getByText, getByTestId } = render(<App />);
+
+    fireEvent.click(getByText(/add ball/i));
+    fireEvent.click(getByText(/add ball/i));
+    fireEvent.click(getByText(/add ball/i));
+    fireEvent.click(getByText(/add ball/i));
+
+    expect(getByTestId("strikes")).toHaveTextContent("0");
+});
+
+test("if balls are at 3, addBall sets fouls to 0", () => {
+    const { getByText, getByTestId } = render(<App />);
+
+    fireEvent.click(getByText(/add ball/i));
+    fireEvent.click(getByText(/add ball/i));
+    fireEvent.click(getByText(/add ball/i));
+    fireEvent.click(getByText(/add ball/i));
+
+    expect(getByTestId("fouls")).toHaveTextContent("0");
+});
+
 test("addStrike adds 1 to strike", () => {
     const { getByText, getByTestId } = render(<App />);
 
@@ -41,6 +63,26 @@ test("if strikes are at 2, addStrike sets strike to 0", () => {
     fireEvent.click(getByText(/add strike/i));
 
     expect(getByTestId("strikes")).toHaveTextContent("0");
+});
+
+test("if strikes are at 2, addStrike sets balls to 0", () => {
+    const { getByText, getByTestId } = render(<App />);
+
+    fireEvent.click(getByText(/add strike/i));
+    fireEvent.click(getByText(/add strike/i));
+    fireEvent.click(getByText(/add strike/i));
+
+    expect(getByTestId("balls")).toHaveTextContent("0");
+});
+
+test("if strikes are at 2, addStrike sets fouls to 0", () => {
+    const { getByText, getByTestId } = render(<App />);
+
+    fireEvent.click(getByText(/add strike/i));
+    fireEvent.click(getByText(/add strike/i));
+    fireEvent.click(getByText(/add strike/i));
+
+    expect(getByTestId("fouls")).toHaveTextContent("0");
 });
 
 test("addFoul adds 1 to foul", () => {

@@ -1,7 +1,16 @@
 import React, { useState, useEffect } from "react";
+import styled from "styled-components";
 
 import Display from "./components/Display";
 import Dashboard from "./components/Dashboard";
+
+const Container = styled.div`
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`;
 
 function App() {
     const [balls, setBalls] = useState(0);
@@ -14,6 +23,8 @@ function App() {
 
         if (updatedBalls > 3 || hit) {
             updatedBalls = 0;
+            setStrikes(0);
+            setFouls(0);
         }
 
         return updatedBalls;
@@ -24,6 +35,8 @@ function App() {
 
         if (updatedStrikes > 2 || hit) {
             updatedStrikes = 0;
+            setBalls(0);
+            setFouls(0);
         }
 
         return updatedStrikes;
@@ -60,7 +73,7 @@ function App() {
     };
 
     return (
-        <div>
+        <Container>
             <Display balls={balls} strikes={strikes} fouls={fouls} hit={hit} />
             <Dashboard
                 setBalls={setBalls}
@@ -70,7 +83,7 @@ function App() {
                 addFoul={() => addFoul(strikes, fouls)}
                 recordHit={recordHit}
             />
-        </div>
+        </Container>
     );
 }
 

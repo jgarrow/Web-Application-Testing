@@ -1,36 +1,53 @@
 import React from "react";
+import styled from "styled-components";
+
+const Dashboard = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+`;
+
+const Button = styled.div`
+    width: 100px;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 10px;
+    background: lightgray;
+    border-radius: 8px;
+`;
 
 export default props => {
     return (
-        <div>
-            <div
+        <Dashboard>
+            <Button
                 onClick={() => {
                     props.setBalls(props.addBall());
                 }}
             >
                 Add ball
-            </div>
-            <div
+            </Button>
+            <Button
                 onClick={() => {
                     props.setStrikes(props.addStrike());
                 }}
             >
                 Add strike
-            </div>
-            <div
+            </Button>
+            <Button
                 onClick={() => {
                     props.setStrikes(props.addFoul());
                 }}
             >
                 Add Foul
-            </div>
-            <div
+            </Button>
+            <Button
                 onClick={() => {
                     props.recordHit();
                 }}
             >
                 Record Hit
-            </div>
-        </div>
+            </Button>
+        </Dashboard>
     );
 };
